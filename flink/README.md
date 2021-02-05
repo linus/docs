@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `ppc64le` builds of [the `flink` official image](https://hub.docker.com/_/flink) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,16 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.10.3-scala_2.11`, `1.10-scala_2.11`](https://github.com/apache/flink-docker/blob/2a89b61a261f803f8785fd5dd882b7f50ec33fce/1.10/scala_2.11-debian/Dockerfile)
--	[`1.10.3-scala_2.12`, `1.10-scala_2.12`, `1.10.3`, `1.10`](https://github.com/apache/flink-docker/blob/2a89b61a261f803f8785fd5dd882b7f50ec33fce/1.10/scala_2.12-debian/Dockerfile)
--	[`1.11.3-scala_2.11-java11`, `1.11-scala_2.11-java11`](https://github.com/apache/flink-docker/blob/7035f03679b11352f2fdecd9f6a9bb0ec8bc2022/1.11/scala_2.11-java11-debian/Dockerfile)
--	[`1.11.3-scala_2.11-java8`, `1.11-scala_2.11-java8`, `1.11.3-scala_2.11`, `1.11-scala_2.11`](https://github.com/apache/flink-docker/blob/7035f03679b11352f2fdecd9f6a9bb0ec8bc2022/1.11/scala_2.11-java8-debian/Dockerfile)
--	[`1.11.3-scala_2.12-java11`, `1.11-scala_2.12-java11`, `1.11.3-java11`, `1.11-java11`](https://github.com/apache/flink-docker/blob/7035f03679b11352f2fdecd9f6a9bb0ec8bc2022/1.11/scala_2.12-java11-debian/Dockerfile)
--	[`1.11.3-scala_2.12-java8`, `1.11-scala_2.12-java8`, `1.11.3-scala_2.12`, `1.11-scala_2.12`, `1.11.3-java8`, `1.11-java8`, `1.11.3`, `1.11`](https://github.com/apache/flink-docker/blob/7035f03679b11352f2fdecd9f6a9bb0ec8bc2022/1.11/scala_2.12-java8-debian/Dockerfile)
--	[`1.12.1-scala_2.11-java11`, `1.12-scala_2.11-java11`, `scala_2.11-java11`](https://github.com/apache/flink-docker/blob/adc8432ea3ae7fa111172c2b3d3e6a923b9af4dd/1.12/scala_2.11-java11-debian/Dockerfile)
--	[`1.12.1-scala_2.11-java8`, `1.12-scala_2.11-java8`, `scala_2.11-java8`, `1.12.1-scala_2.11`, `1.12-scala_2.11`, `scala_2.11`](https://github.com/apache/flink-docker/blob/adc8432ea3ae7fa111172c2b3d3e6a923b9af4dd/1.12/scala_2.11-java8-debian/Dockerfile)
--	[`1.12.1-scala_2.12-java11`, `1.12-scala_2.12-java11`, `scala_2.12-java11`, `1.12.1-java11`, `1.12-java11`, `java11`](https://github.com/apache/flink-docker/blob/adc8432ea3ae7fa111172c2b3d3e6a923b9af4dd/1.12/scala_2.12-java11-debian/Dockerfile)
--	[`1.12.1-scala_2.12-java8`, `1.12-scala_2.12-java8`, `scala_2.12-java8`, `1.12.1-scala_2.12`, `1.12-scala_2.12`, `scala_2.12`, `1.12.1-java8`, `1.12-java8`, `java8`, `1.12.1`, `1.12`, `latest`](https://github.com/apache/flink-docker/blob/adc8432ea3ae7fa111172c2b3d3e6a923b9af4dd/1.12/scala_2.12-java8-debian/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/flink build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/flink.svg?label=ppc64le/flink%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/flink/)
 
 # Quick reference (cont.)
 
