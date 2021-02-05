@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `mips64le` builds of [the `influxdb` official image](https://hub.docker.com/_/influxdb) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,18 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.7`, `1.7.10`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.7/Dockerfile)
--	[`1.7-alpine`, `1.7.10-alpine`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.7/alpine/Dockerfile)
--	[`1.7-data`, `1.7.10-data`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.7/data/Dockerfile)
--	[`1.7-data-alpine`, `1.7.10-data-alpine`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.7/data/alpine/Dockerfile)
--	[`1.7-meta`, `1.7.10-meta`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.7/meta/Dockerfile)
--	[`1.7-meta-alpine`, `1.7.10-meta-alpine`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.7/meta/alpine/Dockerfile)
--	[`1.8`, `1.8.4`, `latest`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.8/Dockerfile)
--	[`1.8-alpine`, `1.8.4-alpine`, `alpine`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.8/alpine/Dockerfile)
--	[`1.8-data`, `1.8.3-data`, `data`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.8/data/Dockerfile)
--	[`1.8-data-alpine`, `1.8.3-data-alpine`, `data-alpine`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.8/data/alpine/Dockerfile)
--	[`1.8-meta`, `1.8.3-meta`, `meta`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.8/meta/Dockerfile)
--	[`1.8-meta-alpine`, `1.8.3-meta-alpine`, `meta-alpine`](https://github.com/influxdata/influxdata-docker/blob/4d733eabcc1e3691e462a702db8eede9d19a9c0a/influxdb/1.8/meta/alpine/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/influxdb build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/influxdb.svg?label=mips64le/influxdb%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/influxdb/)
 
 # Quick reference (cont.)
 
@@ -77,7 +70,7 @@ The InfluxDB image exposes a shared volume under `/var/lib/influxdb`, so you can
 ```console
 $ docker run -p 8086:8086 \
       -v $PWD:/var/lib/influxdb \
-      influxdb
+      mips64le/influxdb
 ```
 
 Modify `$PWD` to the directory where you want to store data associated with the InfluxDB container.
@@ -87,7 +80,7 @@ You can also have Docker control the volume mountpoint by using a named volume.
 ```console
 $ docker run -p 8086:8086 \
       -v influxdb:/var/lib/influxdb \
-      influxdb
+      mips64le/influxdb
 ```
 
 ### Exposed Ports
@@ -108,7 +101,7 @@ InfluxDB can be either configured from a config file or using environment variab
 Generate the default configuration file:
 
 ```console
-$ docker run --rm influxdb influxd config > influxdb.conf
+$ docker run --rm mips64le/influxdb influxd config > influxdb.conf
 ```
 
 Modify the default configuration, which will now be available under `$PWD`. Then start the InfluxDB container.
@@ -116,7 +109,7 @@ Modify the default configuration, which will now be available under `$PWD`. Then
 ```console
 $ docker run -p 8086:8086 \
       -v $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro \
-      influxdb -config /etc/influxdb/influxdb.conf
+      mips64le/influxdb -config /etc/influxdb/influxdb.conf
 ```
 
 Modify `$PWD` to the directory where you want to store the configuration file.
@@ -140,7 +133,7 @@ InfluxDB supports the Graphite line protocol, but the service and ports are not 
 ```console
 docker run -p 8086:8086 -p 2003:2003 \
     -e INFLUXDB_GRAPHITE_ENABLED=true \
-    influxdb
+    mips64le/influxdb
 ```
 
 See the [README on GitHub](https://github.com/influxdata/influxdb/blob/master/services/graphite/README.md) for more detailed documentation to set up the Graphite service. In order to take advantage of graphite templates, you should use a configuration file by outputting a default configuration file using the steps above and modifying the `[[graphite]]` section.
@@ -166,7 +159,7 @@ Read more about this in the [official documentation](https://docs.influxdata.com
 Start the container:
 
 ```console
-$ docker run --name=influxdb -d -p 8086:8086 influxdb
+$ docker run --name=influxdb -d -p 8086:8086 mips64le/influxdb
 ```
 
 Run the influx client in this container:
@@ -178,7 +171,7 @@ $ docker exec -it influxdb influx
 Or run the influx client in a separate container:
 
 ```console
-$ docker run --rm --link=influxdb -it influxdb influx -host influxdb
+$ docker run --rm --link=influxdb -it mips64le/influxdb influx -host influxdb
 ```
 
 ### Database Initialization
@@ -249,151 +242,6 @@ $ docker run --rm \
 ```
 
 The above would create the database `db0`, create an admin user with the password `supersecretpassword`, then create the `telegraf` user with your telegraf's secret password. It would then exit and leave behind any files it created in the volume that you mounted.
-
-# Image Variants
-
-The `influxdb` images come in many flavors, each designed for a specific use case.
-
-## `influxdb:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `influxdb:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](https://musl.libc.org) instead of [glibc and friends](https://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
-
-## `influxdb:data`
-
-*This image requires a valid license key from InfluxData.* Please visit our [products page](https://www.influxdata.com/products/) to learn more.
-
-This image contains the enterprise data node package for clustering. It supports all of the same options as the OSS image, but it needs port 8088 to be exposed to the meta nodes.
-
-Refer to the `influxdb:meta` variant for directions on how to setup a cluster.
-
-## `influxdb:meta`
-
-*This image requires a valid license key from InfluxData.* Please visit our [products page](https://www.influxdata.com/products/) to learn more.
-
-This image contains the enterprise meta node package for clustering. It is meant to be used in conjunction with the `influxdb:data` package of the same version.
-
-### Using this Image
-
-#### Specifying the license key
-
-The license key can be specified using either an environment variable or by overriding the configuration file. If you specify the license key directly, the container needs to be able to access the InfluxData portal.
-
-```console
-$ docker run -p 8089:8089 -p 8091:8091 \
-      -e INFLUXDB_ENTERPRISE_LICENSE_KEY=<license-key>
-      influxdb:meta
-```
-
-#### Running the container
-
-The examples below will use docker's built-in networking capability. If you use the port exposing feature, the host port and the container port need to be the same.
-
-First, create a docker network:
-
-```console
-$ docker network create influxdb
-```
-
-Start three meta nodes. This is the suggested number of meta nodes. We do not recommend running more or less. If you choose to run more or less, be sure that the number of meta nodes is odd. The hostname must be set on each container to the address that will be used to access the meta node. When using docker networks, the hostname should be made the same as the name of the container.
-
-```console
-$ docker run -d --name=influxdb-meta-0 --network=influxdb \
-      -h influxdb-meta-0 \
-      -e INFLUXDB_ENTERPRISE_LICENSE_KEY=<license-key> \
-      influxdb:meta
-$ docker run -d --name=influxdb-meta-1 --network=influxdb \
-      -h influxdb-meta-1 \
-      -e INFLUXDB_ENTERPRISE_LICENSE_KEY=<license-key> \
-      influxdb:meta
-$ docker run -d --name=influxdb-meta-2 --network=influxdb \
-      -h influxdb-meta-2 \
-      -e INFLUXDB_ENTERPRISE_LICENSE_KEY=<license-key> \
-      influxdb:meta
-```
-
-When setting the hostname, you can use `-h <hostname>` or you can directly set the environment variable using `-e INFLUXDB_HOSTNAME=<hostname>`.
-
-After starting the meta nodes, you need to tell them about each other. Choose one of the meta nodes and run `influxd-ctl` in the container.
-
-```console
-$ docker exec influxdb-meta-0 \
-      influxd-ctl add-meta influxdb-meta-1:8091
-$ docker exec influxdb-meta-0 \
-      influxd-ctl add-meta influxdb-meta-2:8091
-```
-
-Or you can just start a single meta node. If you setup a single meta node, you do not need to use `influxd-ctl add-meta`.
-
-```console
-$ docker run -d --name=influxdb-meta --network=influxdb \
-      -h influxdb-meta \
-      -e INFLUXDB_ENTERPRISE_LICENSE_KEY=<license-key> \
-      influxdb:meta -single-server
-```
-
-#### Connecting the data nodes
-
-Start the data nodes using `influxdb:data` with similar command line arguments to the meta nodes. You can start as many data nodes as are allowed by your license.
-
-```console
-$ docker run -d --name=influxdb-data-0 --network=influxdb \
-      -h influxdb-data-0 \
-      -e INFLUXDB_LICENSE_KEY=<license-key> \
-      influxdb:data
-```
-
-You can add `-p 8086:8086` to expose the http port to the host machine. After starting the container, choose one of the meta nodes and add the data node to it.
-
-```console
-$ docker exec influxdb-meta-0 \
-      influxd-ctl add-data influxdb-data-0:8088
-```
-
-Perform these same steps for any other data nodes that you want to add.
-
-You can now connect to any of the running data nodes to use your cluster.
-
-See the [influxdb](https://hub.docker.com/_/influxdb/) image documentation for more details on how to use the data node images.
-
-#### Configuration
-
-InfluxDB Meta can be either configured from a config file or using environment variables. To mount a configuration file and use it with the server, you can use this command:
-
-Generate the default configuration file:
-
-```console
-$ docker run --rm influxdb:meta influxd-meta config > influxdb-meta.conf
-```
-
-Modify the default configuration, which will now be available under `$PWD`. Then start the InfluxDB Meta container.
-
-```console
-$ docker run \
-      -v $PWD/influxdb-meta.conf:/etc/influxdb/influxdb-meta.conf:ro \
-      influxdb -config /etc/influxdb/influxdb-meta.conf
-```
-
-Modify `$PWD` to the directory where you want to store the configuration file.
-
-For environment variables, the format is `INFLUXDB_$SECTION_$NAME`. All dashes (`-`) are replaced with underscores (`_`). If the variable isn't in a section, then omit that part.
-
-Examples:
-
-```console
-INFLUXDB_REPORTING_DISABLED=true
-INFLUXDB_META_DIR=/path/to/metadir
-INFLUXDB_ENTERPRISE_REGISTRATION_ENABLED=true
-```
-
-Find more about configuring InfluxDB Meta [here](http://docs.influxdata.com/enterprise_influxdb/latest/production_installation/meta_node_installation/).
 
 # License
 

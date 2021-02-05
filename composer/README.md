@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `mips64le` builds of [the `composer` official image](https://hub.docker.com/_/composer) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,8 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.0.9`, `2.0`, `2`, `latest`](https://github.com/composer/docker/blob/2a6335d61cc92b7c43b69072ac107c4afb568f49/2.0/Dockerfile)
--	[`1.10.20`, `1.10`, `1`](https://github.com/composer/docker/blob/2a6335d61cc92b7c43b69072ac107c4afb568f49/1.10/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/composer build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/composer.svg?label=mips64le/composer%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/composer/)
 
 # Quick reference (cont.)
 
@@ -63,7 +66,7 @@ Running the `composer` image is as simple as follows:
 ```console
 $ docker run --rm --interactive --tty \
   --volume $PWD:/app \
-  composer install
+  mips64le/composer install
 ```
 
 ### Persistent cache / global configuration
@@ -74,7 +77,7 @@ You can bind mount the Composer home directory from your host to the container t
 $ docker run --rm --interactive --tty \
   --volume $PWD:/app \
   --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
-  composer install
+  mips64le/composer install
 ```
 
 **Note:** this relies on the fact that the `COMPOSER_HOME` value is set to `/tmp` in the image by default.
@@ -88,7 +91,7 @@ $ docker run --rm --interactive --tty \
   --volume ${COMPOSER_HOME:-$HOME/.config/composer}:$COMPOSER_HOME \
   --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
   --volume $PWD:/app \
-  composer install
+  mips64le/composer install
 ```
 
 ### Filesystem permissions
@@ -99,7 +102,7 @@ By default, Composer runs as root inside the container. This can lead to permiss
 $ docker run --rm --interactive --tty \
   --volume $PWD:/app \
   --user $(id -u):$(id -g) \
-  composer install
+  mips64le/composer install
 ```
 
 ### Private repositories / SSH agent
@@ -112,7 +115,7 @@ $ eval $(ssh-agent); \
   --volume $PWD:/app \
   --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
   --env SSH_AUTH_SOCK=/ssh-auth.sock \
-  composer install
+  mips64le/composer install
 ```
 
 **Note:** On OSX this requires Docker For Mac v2.2.0.0 or later, see [docker/for-mac#410](https://github.com/docker/for-mac/issues/410).
@@ -128,7 +131,7 @@ $ eval $(ssh-agent); \
   --volume /etc/group:/etc/group:ro \
   --env SSH_AUTH_SOCK=/ssh-auth.sock \
   --user $(id -u):$(id -g) \
-  composer install
+  mips64le/composer install
 ```
 
 # Troubleshooting
@@ -146,7 +149,7 @@ Suggestions:
 	**Note:** Docker 17.05 introduced [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/), simplifying this enormously:
 
 	```dockerfile
-	COPY --from=composer /usr/bin/composer /usr/bin/composer
+	COPY --from=mips64le/composer /usr/bin/composer /usr/bin/composer
 	```
 
 -	(alternatively) specify the target [platform](https://getcomposer.org/doc/06-config.md#platform) / extension(s) in your `composer.json`:
@@ -167,7 +170,7 @@ Suggestions:
 	```console
 	$ docker run --rm --interactive --tty \
 	  --volume $PWD:/app \
-	  composer install --ignore-platform-reqs --no-scripts
+	  mips64le/composer install --ignore-platform-reqs --no-scripts
 	```
 
 # License

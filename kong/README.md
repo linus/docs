@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `mips64le` builds of [the `kong` official image](https://hub.docker.com/_/kong) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,18 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.3.1-alpine`, `2.3-alpine`, `2.3.1`, `2.3`, `2`, `alpine`, `latest`](https://github.com/Kong/docker-kong/blob/d9662d3b444e3715a42ab3c119129374dec59f0b/alpine/Dockerfile)
--	[`2.3.1-ubuntu`, `2.3-ubuntu`, `ubuntu`](https://github.com/Kong/docker-kong/blob/d9662d3b444e3715a42ab3c119129374dec59f0b/ubuntu/Dockerfile)
--	[`2.3.1-centos`, `2.3-centos`, `centos`](https://github.com/Kong/docker-kong/blob/d9662d3b444e3715a42ab3c119129374dec59f0b/centos/Dockerfile)
--	[`2.2.1-alpine`, `2.2-alpine`, `2.2.0`, `2.2`](https://github.com/Kong/docker-kong/blob/b68b1ce746f425117d73bbdde09e0fd5edb284da/alpine/Dockerfile)
--	[`2.2.1-ubuntu`, `2.2-ubuntu`](https://github.com/Kong/docker-kong/blob/b68b1ce746f425117d73bbdde09e0fd5edb284da/ubuntu/Dockerfile)
--	[`2.2.1-centos`, `2.2-centos`](https://github.com/Kong/docker-kong/blob/b68b1ce746f425117d73bbdde09e0fd5edb284da/centos/Dockerfile)
--	[`2.1.4-alpine`, `2.1-alpine`, `2.1.4`, `2.1`](https://github.com/Kong/docker-kong/blob/b4c835f84d56a2d2d69c2780a1a409177ea0844f/alpine/Dockerfile)
--	[`2.1.4-ubuntu`, `2.1-ubuntu`](https://github.com/Kong/docker-kong/blob/397f34af7d3503cc64614ef5852d5929a84ef65b/ubuntu/Dockerfile)
--	[`2.1.4-centos`, `2.1-centos`](https://github.com/Kong/docker-kong/blob/397f34af7d3503cc64614ef5852d5929a84ef65b/centos/Dockerfile)
--	[`2.0.5-alpine`, `2.0.5`, `2.0`](https://github.com/Kong/docker-kong/blob/60626098f2f32fe1528eb4ffacff13fd1c3e919f/alpine/Dockerfile)
--	[`2.0.5-ubuntu`, `2.0-ubuntu`](https://github.com/Kong/docker-kong/blob/60626098f2f32fe1528eb4ffacff13fd1c3e919f/ubuntu/Dockerfile)
--	[`2.0.5-centos`, `2.0-centos`](https://github.com/Kong/docker-kong/blob/60626098f2f32fe1528eb4ffacff13fd1c3e919f/centos/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/kong build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/kong.svg?label=mips64le/kong%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/kong/)
 
 # Quick reference (cont.)
 
@@ -80,7 +73,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    mips64le/kong
 ```
 
 Generate a skeleton configuration file to get you started
@@ -138,7 +131,7 @@ $ docker run --rm \
     -e "KONG_DATABASE=postgres" \
     -e "KONG_PG_HOST=kong-database" \
     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
-    kong kong migrations bootstrap
+    mips64le/kong kong migrations bootstrap
 ```
 
 In the above example, both Cassandra and PostgreSQL are configured, but you should update the `KONG_DATABASE` environment variable with either `cassandra` or `postgres`.
@@ -164,7 +157,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    mips64le/kong
 ```
 
 If everything went well, and if you created your container with the default ports, Kong should be listening on your host's `8000` ([Proxy](https://docs.konghq.com/latest/configuration/#proxy_port)), `8443` ([Proxy SSL](https://docs.konghq.com/latest/configuration/#proxy_listen_ssl)), `8001` ([Admin API](https://docs.konghq.com/latest/configuration/#admin_listen)) and `8444` ([Admin API SSL](https://docs.konghq.com/latest/configuration/#admin_listen_ssl)) ports.
@@ -187,7 +180,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    mips64le/kong
 ```
 
 ## Reload Kong in a running container
@@ -203,22 +196,6 @@ This will run the [`kong reload`](https://docs.konghq.com/latest/cli/#reload) co
 # Kubernetes Ingress
 
 Among the many deployment options [available](https://konghq.com/install), Kong also offers a [Kubernetes Ingress Controller](https://github.com/Kong/kubernetes-ingress-controller) ready to use in your K8S environment.
-
-# Image Variants
-
-The `kong` images come in many flavors, each designed for a specific use case.
-
-## `kong:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `kong:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](https://musl.libc.org) instead of [glibc and friends](https://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
