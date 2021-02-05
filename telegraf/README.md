@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v5` builds of [the `telegraf` official image](https://hub.docker.com/_/telegraf) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,12 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.15`, `1.15.4`](https://github.com/influxdata/influxdata-docker/blob/52a89544a93622f32e4967758e678d83f9c691f9/telegraf/1.15/Dockerfile)
--	[`1.15-alpine`, `1.15.4-alpine`](https://github.com/influxdata/influxdata-docker/blob/52a89544a93622f32e4967758e678d83f9c691f9/telegraf/1.15/alpine/Dockerfile)
--	[`1.16`, `1.16.3`](https://github.com/influxdata/influxdata-docker/blob/52a89544a93622f32e4967758e678d83f9c691f9/telegraf/1.16/Dockerfile)
--	[`1.16-alpine`, `1.16.3-alpine`](https://github.com/influxdata/influxdata-docker/blob/52a89544a93622f32e4967758e678d83f9c691f9/telegraf/1.16/alpine/Dockerfile)
--	[`1.17`, `1.17.2`, `latest`](https://github.com/influxdata/influxdata-docker/blob/52a89544a93622f32e4967758e678d83f9c691f9/telegraf/1.17/Dockerfile)
--	[`1.17-alpine`, `1.17.2-alpine`, `alpine`](https://github.com/influxdata/influxdata-docker/blob/52a89544a93622f32e4967758e678d83f9c691f9/telegraf/1.17/alpine/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v5` ARCHITECTURE
+
+[![arm32v5/telegraf build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/telegraf.svg?label=arm32v5/telegraf%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/telegraf/)
 
 # Quick reference (cont.)
 
@@ -79,7 +78,7 @@ $ docker run -d --name influxdb -p 8086:8086 influxdb
 Starting Telegraf using the default config, which connects to InfluxDB at `http://localhost:8086/`:
 
 ```console
-$ docker run --net=container:influxdb telegraf
+$ docker run --net=container:influxdb arm32v5/telegraf
 ```
 
 ### Using a custom config file
@@ -87,13 +86,13 @@ $ docker run --net=container:influxdb telegraf
 First, generate a sample configuration and save it as `telegraf.conf` on the host:
 
 ```console
-$ docker run --rm telegraf telegraf config > telegraf.conf
+$ docker run --rm arm32v5/telegraf telegraf config > telegraf.conf
 ```
 
 Once you've customized `telegraf.conf`, you can run the Telegraf container with it mounted in the expected location:
 
 ```console
-$ docker run -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro telegraf
+$ docker run -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro arm32v5/telegraf
 ```
 
 Modify `$PWD` to the directory where you want to store the configuration file.
@@ -129,7 +128,7 @@ Finally, we start our Telegraf container and verify functionality:
 $ docker run -d --name=telegraf \
       --net=influxdb \
       -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
-      telegraf
+      arm32v5/telegraf
 $ docker logs -f telegraf
 ```
 
@@ -207,7 +206,7 @@ $ docker run -d --name=telegraf \
       --net=influxdb \
       -p 8125:8125/udp \
       -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
-      telegraf
+      arm32v5/telegraf
 ```
 
 Send Mock StatsD data:
@@ -240,7 +239,7 @@ $ docker run -d --name=telegraf \
 	-e HOST_VAR=/hostfs/var \
 	-e HOST_RUN=/hostfs/run \
 	-e HOST_MOUNT_PREFIX=/hostfs \
-	telegraf
+	arm32v5/telegraf
 ```
 
 ### Monitoring docker containers
@@ -259,7 +258,7 @@ $ docker run -d --name=telegraf \
       --net=influxdb \
       -v /var/run/docker.sock:/var/run/docker.sock \
       -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
-      telegraf
+      arm32v5/telegraf
 ```
 
 Refer to the docker [plugin documentation](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/docker/README.md) for more information.
@@ -305,22 +304,6 @@ Run your derivative image:
 ```console
 $ docker run --name telegraf --rm -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf telegraf-mtr:1.12.3
 ```
-
-# Image Variants
-
-The `telegraf` images come in many flavors, each designed for a specific use case.
-
-## `telegraf:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `telegraf:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](https://musl.libc.org) instead of [glibc and friends](https://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
