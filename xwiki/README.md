@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `s390x` builds of [the `xwiki` official image](https://hub.docker.com/_/xwiki) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,12 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`13`, `13.0`, `13.0.0`, `13-mysql-tomcat`, `13.0-mysql-tomcat`, `13.0.0-mysql-tomcat`, `mysql-tomcat`, `stable-mysql-tomcat`, `stable-mysql`, `stable`, `latest`](https://github.com/xwiki-contrib/docker-xwiki/blob/828bca87e2fc95c7942b1f9c1ccd0b9cc2721b95/13/mysql-tomcat/Dockerfile)
--	[`13-postgres-tomcat`, `13.0-postgres-tomcat`, `13.0.0-postgres-tomcat`, `postgres-tomcat`, `stable-postgres-tomcat`, `stable-postgres`](https://github.com/xwiki-contrib/docker-xwiki/blob/828bca87e2fc95c7942b1f9c1ccd0b9cc2721b95/13/postgres-tomcat/Dockerfile)
--	[`12`, `12.10`, `12.10.3`, `12-mysql-tomcat`, `12.10-mysql-tomcat`, `12.10.3-mysql-tomcat`, `lts-mysql-tomcat`, `lts-mysql`, `lts`](https://github.com/xwiki-contrib/docker-xwiki/blob/be6a716da83415a667296f8b28706bd59adc9c8b/12/mysql-tomcat/Dockerfile)
--	[`12-postgres-tomcat`, `12.10-postgres-tomcat`, `12.10.3-postgres-tomcat`, `lts-postgres-tomcat`, `lts-postgres`](https://github.com/xwiki-contrib/docker-xwiki/blob/be6a716da83415a667296f8b28706bd59adc9c8b/12/postgres-tomcat/Dockerfile)
--	[`12.6`, `12.6.7`, `12.6-mysql-tomcat`, `12.6.7-mysql-tomcat`](https://github.com/xwiki-contrib/docker-xwiki/blob/b0cf482e10e8b0507122ce654f5a7d660063620f/12/mysql-tomcat/Dockerfile)
--	[`12.6-postgres-tomcat`, `12.6.7-postgres-tomcat`](https://github.com/xwiki-contrib/docker-xwiki/blob/b0cf482e10e8b0507122ce654f5a7d660063620f/12/postgres-tomcat/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/xwiki build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/xwiki.svg?label=s390x/xwiki%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/xwiki/)
 
 # Quick reference (cont.)
 

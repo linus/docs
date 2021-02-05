@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `s390x` builds of [the `vault` official image](https://hub.docker.com/_/vault) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,9 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.6.2`, `latest`](https://github.com/hashicorp/docker-vault/blob/58af2342eeee52d947acebc44e2df52febc9fb81/0.X/Dockerfile)
--	[`1.5.7`](https://github.com/hashicorp/docker-vault/blob/25c5a3a51e0730bd1aae9f924d3700a230f1488c/0.X/Dockerfile)
--	[`1.4.7`](https://github.com/hashicorp/docker-vault/blob/e4635725bcf8ce18f9d8fd5be5a69bf882d21223/0.X/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/vault build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/vault.svg?label=s390x/vault%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/vault/)
 
 # Quick reference (cont.)
 
@@ -78,7 +80,7 @@ The container will attempt to lock memory to prevent sensitive values from being
 ## Running Vault for Development
 
 ```console
-$ docker run --cap-add=IPC_LOCK -d --name=dev-vault vault
+$ docker run --cap-add=IPC_LOCK -d --name=dev-vault s390x/vault
 ```
 
 This runs a completely in-memory Vault server, which is useful for development but should not be used in production.
@@ -91,13 +93,13 @@ When running in development mode, two additional options can be set via environm
 As an example:
 
 ```console
-$ docker run --cap-add=IPC_LOCK -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:1234' vault
+$ docker run --cap-add=IPC_LOCK -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:1234' s390x/vault
 ```
 
 ## Running Vault in Server Mode
 
 ```console
-$ docker run --cap-add=IPC_LOCK -e 'VAULT_LOCAL_CONFIG={"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}' vault server
+$ docker run --cap-add=IPC_LOCK -e 'VAULT_LOCAL_CONFIG={"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}' s390x/vault server
 ```
 
 This runs a Vault server using the `file` storage backend at path `/vault/file`, with a default secret lease duration of one week and a maximum of 30 days.
