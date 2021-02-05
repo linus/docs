@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `i386` builds of [the `busybox` official image](https://hub.docker.com/_/busybox) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,14 +26,16 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.32.1-uclibc`, `1.32-uclibc`, `1-uclibc`, `stable-uclibc`, `uclibc`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/stable/uclibc/Dockerfile)
--	[`1.32.1-glibc`, `1.32-glibc`, `1-glibc`, `stable-glibc`, `glibc`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/stable/glibc/Dockerfile)
--	[`1.32.1-musl`, `1.32-musl`, `1-musl`, `stable-musl`, `musl`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/stable/musl/Dockerfile)
--	[`1.32.1`, `1.32`, `1`, `stable`, `latest`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/stable/uclibc/Dockerfile)
--	[`1.33.0-uclibc`, `1.33-uclibc`, `unstable-uclibc`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/unstable/uclibc/Dockerfile)
--	[`1.33.0-glibc`, `1.33-glibc`, `unstable-glibc`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/unstable/glibc/Dockerfile)
--	[`1.33.0-musl`, `1.33-musl`, `unstable-musl`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/unstable/musl/Dockerfile)
--	[`1.33.0`, `1.33`, `unstable`](https://github.com/docker-library/busybox/blob/844e23eae6a28fd1faf9b25f8ed977ae4b168a0f/unstable/uclibc/Dockerfile)
+-	[`1.32.1-uclibc`, `1.32-uclibc`, `1-uclibc`, `stable-uclibc`, `uclibc`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/stable/uclibc/Dockerfile)
+-	[`1.32.1-glibc`, `1.32-glibc`, `1-glibc`, `stable-glibc`, `glibc`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/stable/glibc/Dockerfile)
+-	[`1.32.1-musl`, `1.32-musl`, `1-musl`, `stable-musl`, `musl`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/stable/musl/Dockerfile)
+-	[`1.32.1`, `1.32`, `1`, `stable`, `latest`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/stable/uclibc/Dockerfile)
+-	[`1.33.0-uclibc`, `1.33-uclibc`, `unstable-uclibc`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/unstable/uclibc/Dockerfile)
+-	[`1.33.0-glibc`, `1.33-glibc`, `unstable-glibc`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/unstable/glibc/Dockerfile)
+-	[`1.33.0-musl`, `1.33-musl`, `unstable-musl`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/unstable/musl/Dockerfile)
+-	[`1.33.0`, `1.33`, `unstable`](https://github.com/docker-library/busybox/blob/9d15b86fc841ea26a6f4887fd554e9dfa2f7ad05/unstable/uclibc/Dockerfile)
+
+[![i386/busybox build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/busybox.svg?label=i386/busybox%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/busybox/)
 
 # Quick reference (cont.)
 
@@ -67,7 +71,7 @@ BusyBox combines tiny versions of many common UNIX utilities into a single small
 ## Run BusyBox shell
 
 ```console
-$ docker run -it --rm busybox
+$ docker run -it --rm i386/busybox
 ```
 
 This will drop you into an `sh` shell to allow you to do what you want inside a BusyBox system.
@@ -75,7 +79,7 @@ This will drop you into an `sh` shell to allow you to do what you want inside a 
 ## Create a `Dockerfile` for a binary
 
 ```dockerfile
-FROM busybox
+FROM i386/busybox
 COPY ./my-static-binary /my-static-binary
 CMD ["/my-static-binary"]
 ```
@@ -84,19 +88,19 @@ This `Dockerfile` will allow you to create a minimal image for your statically c
 
 # Image Variants
 
-The `busybox` images contain BusyBox built against various "libc" variants (for a comparison of "libc" variants, [Eta Labs has a very nice chart](http://www.etalabs.net/compare_libcs.html) which lists many similarities and differences).
+The `i386/busybox` images contain BusyBox built against various "libc" variants (for a comparison of "libc" variants, [Eta Labs has a very nice chart](http://www.etalabs.net/compare_libcs.html) which lists many similarities and differences).
 
 For more information about the specific particulars of the build process for each variant, see `Dockerfile.builder` in the same directory as each variant's `Dockerfile` (see links above).
 
-## `busybox:uclibc`
+## `i386/busybox:uclibc`
 
 -	[uClibc](https://uclibc.org) via [Buildroot](https://buildroot.org) (statically compiled)
 
-## `busybox:glibc`
+## `i386/busybox:glibc`
 
 -	[glibc from Debian](https://packages.debian.org/search?searchon=names&exact=1&suite=all&section=all&keywords=libc6) (which is then included in the image)
 
-## `busybox:musl`
+## `i386/busybox:musl`
 
 -	[musl from Alpine](https://pkgs.alpinelinux.org/packages?name=musl) (statically compiled)
 

@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `i386` builds of [the `crate` official image](https://hub.docker.com/_/crate) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,12 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`4.4.0`, `4.4`, `latest`](https://github.com/crate/docker-crate/blob/940265de24dabe9fb3c07d02b5381249d974ef5a/Dockerfile)
--	[`4.3.4`, `4.3`](https://github.com/crate/docker-crate/blob/eae5f171ef089074d42d033af2988714a87190b6/Dockerfile)
--	[`4.2.7`, `4.2`](https://github.com/crate/docker-crate/blob/441cd8bb0115a268f30633839bc29d813dfaa0db/Dockerfile)
--	[`4.1.8`, `4.1`](https://github.com/crate/docker-crate/blob/fbe46a3c699dfe79242e659626a39b09325d58ab/Dockerfile)
--	[`4.0.12`, `4.0`](https://github.com/crate/docker-crate/blob/7791cda08fbf054ab2ce7a988f8811074b8c3bf4/Dockerfile)
--	[`3.3.5`, `3.3`](https://github.com/crate/docker-crate/blob/896c3f63e8e3d4746019e379a7aefb5225b050e3/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `i386` ARCHITECTURE
+
+[![i386/crate build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/crate.svg?label=i386/crate%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/crate/)
 
 # Quick reference (cont.)
 
@@ -72,7 +71,7 @@ The smallest CrateDB clusters can easily ingest tens of thousands of records per
 Spin up this Docker image like so:
 
 ```console
-$ docker run -p 4200:4200 crate
+$ docker run -p 4200:4200 i386/crate
 ```
 
 Once you're up and running, head on over to [the introductory docs](https://crate.io/docs/crate/getting-started/en/latest/first-use/index.html).

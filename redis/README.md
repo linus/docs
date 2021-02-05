@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `i386` builds of [the `redis` official image](https://hub.docker.com/_/redis) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -29,8 +31,9 @@ WARNING:
 -	[`6.0.10`, `6.0`, `6`, `latest`, `6.0.10-buster`, `6.0-buster`, `6-buster`, `buster`](https://github.com/docker-library/redis/blob/f634377257f6a41eaded4fb57672260fea6369e1/6.0/Dockerfile)
 -	[`6.0.10-alpine`, `6.0-alpine`, `6-alpine`, `alpine`, `6.0.10-alpine3.13`, `6.0-alpine3.13`, `6-alpine3.13`, `alpine3.13`](https://github.com/docker-library/redis/blob/68595be6067839e5c5c1a35bdbb6357d017a8a4e/6.0/alpine/Dockerfile)
 -	[`5.0.10`, `5.0`, `5`, `5.0.10-buster`, `5.0-buster`, `5-buster`](https://github.com/docker-library/redis/blob/1779e83980f7cc0e197c649ba560306991e2e4c6/5.0/Dockerfile)
--	[`5.0.10-32bit`, `5.0-32bit`, `5-32bit`, `5.0.10-32bit-buster`, `5.0-32bit-buster`, `5-32bit-buster`](https://github.com/docker-library/redis/blob/1779e83980f7cc0e197c649ba560306991e2e4c6/5.0/32bit/Dockerfile)
 -	[`5.0.10-alpine`, `5.0-alpine`, `5-alpine`, `5.0.10-alpine3.13`, `5.0-alpine3.13`, `5-alpine3.13`](https://github.com/docker-library/redis/blob/68595be6067839e5c5c1a35bdbb6357d017a8a4e/5.0/alpine/Dockerfile)
+
+[![i386/redis build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/redis.svg?label=i386/redis%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/redis/)
 
 # Quick reference (cont.)
 
@@ -72,13 +75,13 @@ For the ease of accessing Redis from other containers via Docker networking, the
 ## start a redis instance
 
 ```console
-$ docker run --name some-redis -d redis
+$ docker run --name some-redis -d i386/redis
 ```
 
 ## start with persistent storage
 
 ```console
-$ docker run --name some-redis -d redis redis-server --appendonly yes
+$ docker run --name some-redis -d i386/redis redis-server --appendonly yes
 ```
 
 If persistence is enabled, data is stored in the `VOLUME /data`, which can be used with `--volumes-from some-volume-container` or `-v /docker/host/dir:/data` (see [docs.docker volumes](https://docs.docker.com/engine/tutorials/dockervolumes/)).
@@ -88,7 +91,7 @@ For more about Redis Persistence, see [http://redis.io/topics/persistence](http:
 ## connecting via `redis-cli`
 
 ```console
-$ docker run -it --network some-network --rm redis redis-cli -h some-redis
+$ docker run -it --network some-network --rm i386/redis redis-cli -h some-redis
 ```
 
 ## Additionally, If you want to use your own redis.conf ...
@@ -96,7 +99,7 @@ $ docker run -it --network some-network --rm redis redis-cli -h some-redis
 You can create your own Dockerfile that adds a redis.conf from the context into /data/, like so.
 
 ```dockerfile
-FROM redis
+FROM i386/redis
 COPY redis.conf /usr/local/etc/redis/redis.conf
 CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 ```
@@ -104,7 +107,7 @@ CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 Alternatively, you can specify something along the same lines with `docker run` options.
 
 ```console
-$ docker run -v /myredis/conf:/usr/local/etc/redis --name myredis redis redis-server /usr/local/etc/redis/redis.conf
+$ docker run -v /myredis/conf:/usr/local/etc/redis --name myredis i386/redis redis-server /usr/local/etc/redis/redis.conf
 ```
 
 Where `/myredis/conf/` is a local directory containing your `redis.conf` file. Using this method means that there is no need for you to have a Dockerfile for your redis container.
@@ -125,15 +128,15 @@ You can find the list of modules for Redis on [redis.io](https://redis.io/module
 
 # Image Variants
 
-The `redis` images come in many flavors, each designed for a specific use case.
+The `i386/redis` images come in many flavors, each designed for a specific use case.
 
-## `redis:<version>`
+## `i386/redis:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
 Some of these tags may have names like buster in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
 
-## `redis:<version>-alpine`
+## `i386/redis:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
