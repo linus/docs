@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `sonarqube` official image](https://hub.docker.com/_/sonarqube) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -28,6 +30,8 @@ WARNING:
 -	[`8.6.1-community`, `8.6-community`, `8-community`, `community`, `latest`](https://github.com/SonarSource/docker-sonarqube/blob/73a85e01c1f5acfab08026318cfa9da598b9bfb1/8/community/Dockerfile)
 -	[`8.6.1-developer`, `8.6-developer`, `8-developer`, `developer`](https://github.com/SonarSource/docker-sonarqube/blob/73a85e01c1f5acfab08026318cfa9da598b9bfb1/8/developer/Dockerfile)
 -	[`8.6.1-enterprise`, `8.6-enterprise`, `8-enterprise`, `enterprise`](https://github.com/SonarSource/docker-sonarqube/blob/73a85e01c1f5acfab08026318cfa9da598b9bfb1/8/enterprise/Dockerfile)
+
+[![amd64/sonarqube build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sonarqube.svg?label=amd64/sonarqube%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sonarqube/)
 
 # Quick reference (cont.)
 
@@ -127,7 +131,7 @@ $ docker run -ti sonarqube-custom
 Starting from SonarQube 7.8, SonarQube stops gracefully, waiting for any tasks in progress to finish. Waiting for in-progress tasks to finish can take a large amount of time which the docker does not expect by default when stopping. To avoid having the SonarQube instance killed by the Docker daemon after 10 seconds, it is best to configure a timeout to stop the container with `--stop-timeout`. For example:
 
 ```console
-docker run --stop-timeout 3600 sonarqube
+docker run --stop-timeout 3600 amd64/sonarqube
 ```
 
 ## Administration
