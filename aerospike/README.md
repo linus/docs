@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `windows-amd64` builds of [the `aerospike` official image](https://hub.docker.com/_/aerospike) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,10 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.1.0.25`](https://github.com/aerospike/aerospike-server.docker/blob/763335ba84bd648faf3e07d782eea48a57cb3d4a/Dockerfile)
--	[`5.2.0.17`](https://github.com/aerospike/aerospike-server.docker/blob/c70964acccdbf73ade8e053107ccf6d3730eed58/Dockerfile)
--	[`5.3.0.8`](https://github.com/aerospike/aerospike-server.docker/blob/0fa9c18a0a7b4e78756506e5ccc0d3e4a0816607/Dockerfile)
--	[`5.4.0.3`, `latest`](https://github.com/aerospike/aerospike-server.docker/blob/9b8bc9aa356b5d6ac049056fc206cb6f254df5fe/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/aerospike build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/aerospike.svg?label=winamd64/aerospike%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/aerospike/)
 
 # Quick reference (cont.)
 
@@ -61,7 +62,7 @@ Documentation for Aerospike is available at [http://aerospike.com/docs](https://
 The following will run `asd` with all the exposed ports forwarded to the host machine.
 
 ```console
-$ docker run -d --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike
+$ docker run -d --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 winamd64/aerospike
 ```
 
 **NOTE** Although this is the simplest method to getting Aerospike up and running, but it is not the preferred method. To properly run the container, please specify a **custom configuration** with the **access-address** defined.
@@ -72,7 +73,7 @@ By default, `asd` will use the configuration file at `/etc/aerospike/aerospike.c
 
 	-v <DIRECTORY>:/opt/aerospike/etc
 
-Where `<DIRECTORY>` is the path to a directory containing your custom aerospike.conf file. Next, you will want to tell `asd` to use the configuration file that was just mounted by using the `--config-file` option for `aerospike`:
+Where `<DIRECTORY>` is the path to a directory containing your custom aerospike.conf file. Next, you will want to tell `asd` to use the configuration file that was just mounted by using the `--config-file` option for `winamd64/aerospike`:
 
 	--config-file /opt/aerospike/etc/aerospike.conf
 
@@ -81,7 +82,7 @@ This will tell `asd` to use the config file at `/opt/aerospike/etc/aerospike.con
 A full example:
 
 ```console
-$ docker run -d -v <DIRECTORY>:/opt/aerospike/etc --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike asd --foreground --config-file /opt/aerospike/etc/aerospike.conf
+$ docker run -d -v <DIRECTORY>:/opt/aerospike/etc --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 winamd64/aerospike asd --foreground --config-file /opt/aerospike/etc/aerospike.conf
 ```
 
 ### access-address Configuration
@@ -109,7 +110,7 @@ Where `<DIRECTORY>` is the path to a directory containing your data files.
 A full example:
 
 ```console
-$ docker run -d -v <DIRECTORY>:/opt/aerospike/data --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike
+$ docker run -d -v <DIRECTORY>:/opt/aerospike/data --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 winamd64/aerospike
 ```
 
 **Note:** As of version 5.1.0.10 the Dockerfile no longer has /opt/aerospike/data as a Docker Volume by default.

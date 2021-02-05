@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `windows-amd64` builds of [the `elasticsearch` official image](https://hub.docker.com/_/elasticsearch) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,8 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.10.1`](https://github.com/docker-library/elasticsearch/blob/38f3a55628528582a5a951e2fab6c01878af163c/7/Dockerfile)
--	[`6.8.13`](https://github.com/docker-library/elasticsearch/blob/008dd9ddffa1881494e32f6c09763e5097293964/6/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/elasticsearch build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/elasticsearch.svg?label=winamd64/elasticsearch%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/elasticsearch/)
 
 # Quick reference (cont.)
 

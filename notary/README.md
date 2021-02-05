@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `windows-amd64` builds of [the `notary` official image](https://hub.docker.com/_/notary) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,8 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`server-0.6.1-2`, `server`](https://github.com/docker/notary-official-images/blob/278bbe63ea6bfb67974fe969c77e02049fe47ab7/notary-server/Dockerfile)
--	[`signer-0.6.1-2`, `signer`](https://github.com/docker/notary-official-images/blob/278bbe63ea6bfb67974fe969c77e02049fe47ab7/notary-signer/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/notary build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/notary.svg?label=winamd64/notary%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/notary/)
 
 # Quick reference (cont.)
 
