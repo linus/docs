@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v7` builds of [the `kibana` official image](https://hub.docker.com/_/kibana) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,8 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.10.1`](https://github.com/docker-library/kibana/blob/87f688d33b13dfb010749eae424f273e7a10ec95/7/Dockerfile)
--	[`6.8.13`](https://github.com/docker-library/kibana/blob/fc4b5ff0a085e951ea59036fc358f669fd3c437a/6/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v7` ARCHITECTURE
+
+[![arm32v7/kibana build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/kibana.svg?label=arm32v7/kibana%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/kibana/)
 
 # Quick reference (cont.)
 
