@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v6` builds of [the `ros` official image](https://hub.docker.com/_/ros) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,38 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`kinetic-ros-core`, `kinetic-ros-core-xenial`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/kinetic/ubuntu/xenial/ros-core/Dockerfile)
--	[`kinetic-ros-base`, `kinetic-ros-base-xenial`, `kinetic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/kinetic/ubuntu/xenial/ros-base/Dockerfile)
--	[`kinetic-robot`, `kinetic-robot-xenial`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/kinetic/ubuntu/xenial/robot/Dockerfile)
--	[`kinetic-perception`, `kinetic-perception-xenial`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/kinetic/ubuntu/xenial/perception/Dockerfile)
--	[`melodic-ros-core`, `melodic-ros-core-bionic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/ubuntu/bionic/ros-core/Dockerfile)
--	[`melodic-ros-base`, `melodic-ros-base-bionic`, `melodic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/ubuntu/bionic/ros-base/Dockerfile)
--	[`melodic-robot`, `melodic-robot-bionic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/ubuntu/bionic/robot/Dockerfile)
--	[`melodic-perception`, `melodic-perception-bionic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/ubuntu/bionic/perception/Dockerfile)
--	[`melodic-ros-core-stretch`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/debian/stretch/ros-core/Dockerfile)
--	[`melodic-ros-base-stretch`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/debian/stretch/ros-base/Dockerfile)
--	[`melodic-robot-stretch`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/debian/stretch/robot/Dockerfile)
--	[`melodic-perception-stretch`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/melodic/debian/stretch/perception/Dockerfile)
--	[`noetic-ros-core`, `noetic-ros-core-focal`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/ubuntu/focal/ros-core/Dockerfile)
--	[`noetic-ros-base`, `noetic-ros-base-focal`, `noetic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/ubuntu/focal/ros-base/Dockerfile)
--	[`noetic-robot`, `noetic-robot-focal`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/ubuntu/focal/robot/Dockerfile)
--	[`noetic-perception`, `noetic-perception-focal`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/ubuntu/focal/perception/Dockerfile)
--	[`noetic-ros-core-buster`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/debian/buster/ros-core/Dockerfile)
--	[`noetic-ros-base-buster`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/debian/buster/ros-base/Dockerfile)
--	[`noetic-robot-buster`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/debian/buster/robot/Dockerfile)
--	[`noetic-perception-buster`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/noetic/debian/buster/perception/Dockerfile)
--	[`dashing-ros-core`, `dashing-ros-core-bionic`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/dashing/ubuntu/bionic/ros-core/Dockerfile)
--	[`dashing-ros-base`, `dashing-ros-base-bionic`, `dashing`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/dashing/ubuntu/bionic/ros-base/Dockerfile)
--	[`dashing-ros1-bridge`, `dashing-ros1-bridge-bionic`](https://github.com/osrf/docker_images/blob/0d38100e2fec914106507817e3122d467617e2ee/ros/dashing/ubuntu/bionic/ros1-bridge/Dockerfile)
--	[`eloquent-ros-core`, `eloquent-ros-core-bionic`](https://github.com/osrf/docker_images/blob/b3e79c3aef3687b56b3c1052ae38aa7010234834/ros/eloquent/ubuntu/bionic/ros-core/Dockerfile)
--	[`eloquent-ros-base`, `eloquent-ros-base-bionic`, `eloquent`](https://github.com/osrf/docker_images/blob/b3e79c3aef3687b56b3c1052ae38aa7010234834/ros/eloquent/ubuntu/bionic/ros-base/Dockerfile)
--	[`eloquent-ros1-bridge`, `eloquent-ros1-bridge-bionic`](https://github.com/osrf/docker_images/blob/b3e79c3aef3687b56b3c1052ae38aa7010234834/ros/eloquent/ubuntu/bionic/ros1-bridge/Dockerfile)
--	[`foxy-ros-core`, `foxy-ros-core-focal`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/foxy/ubuntu/focal/ros-core/Dockerfile)
--	[`foxy-ros-base`, `foxy-ros-base-focal`, `foxy`, `latest`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/foxy/ubuntu/focal/ros-base/Dockerfile)
--	[`foxy-ros1-bridge`, `foxy-ros1-bridge-focal`](https://github.com/osrf/docker_images/blob/f7d378b9d6ed10c72a2f686554f7b712e921c1aa/ros/foxy/ubuntu/focal/ros1-bridge/Dockerfile)
--	[`rolling-ros-core`, `rolling-ros-core-focal`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/rolling/ubuntu/focal/ros-core/Dockerfile)
--	[`rolling-ros-base`, `rolling-ros-base-focal`, `rolling`](https://github.com/osrf/docker_images/blob/df19ab7d5993d3b78a908362cdcd1479a8e78b35/ros/rolling/ubuntu/focal/ros-base/Dockerfile)
--	[`rolling-ros1-bridge`, `rolling-ros1-bridge-focal`](https://github.com/osrf/docker_images/blob/727ccbb47e31d2893e0cd097d5c83ef03cf49b5c/ros/rolling/ubuntu/focal/ros1-bridge/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v6` ARCHITECTURE
+
+[![arm32v6/ros build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/ros.svg?label=arm32v6/ros%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/ros/)
 
 # Quick reference (cont.)
 
@@ -91,7 +64,7 @@ The Robot Operating System (ROS) is a set of software libraries and tools that h
 To create your own ROS docker images and install custom packages, here's a simple example of installing the C++, Python client library demos using the official released Debian packages via apt-get.
 
 ```dockerfile
-FROM ros:foxy
+FROM arm32v6/ros:foxy
 
 # install ros package
 RUN apt-get update && apt-get install -y \
@@ -122,7 +95,7 @@ $ docker run -it --rm my/ros:app
 To create your own ROS docker images and build custom packages, here's a simple example of installing a package's build dependencies, compiling it from source, and installing the resulting build artifacts into a final multi-stage image layer.
 
 ```dockerfile
-ARG FROM_IMAGE=ros:foxy
+ARG FROM_IMAGE=arm32v6/ros:foxy
 ARG OVERLAY_WS=/opt/ros/overlay_ws
 
 # multi-stage for caching
@@ -218,7 +191,7 @@ ROS uses the `~/.ros/` directory for storing logs, and debugging info. If you wi
 For example, if one wishes to use their own `.ros` folder that already resides in their local home directory, with a username of `ubuntu`, we can simply launch the container with an additional volume argument:
 
 ```console
-$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" ros
+$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" arm32v6/ros
 ```
 
 ### Devices
@@ -286,7 +259,7 @@ $ docker-compose rm
 To ease ROS 2 migration, [`ros1_bridge`](https://index.ros.org/p/ros1_bridge/github-ros2-ros1_bridge) is a ROS 2 package that provides bidirectional communication between ROS 1 and ROS 2. As a minimal example, given the ROS 2 Dockerfile above, we'll create the ROS 1 equivalent below, and name the Dockerfile appropriately.
 
 ```dockerfile
-FROM ros:noetic
+FROM arm32v6/ros:noetic
 
 # install ros package
 RUN apt-get update && apt-get install -y \
